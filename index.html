@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>MishLux Couture | Luxury Custom Wears</title>
+  <meta name="description" content="MishLux Couture creates premium custom shirts, trousers, senators and native wears tailored perfectly for men and women. Order directly via WhatsApp.">
+
+  <style>
+    :root {
+      --primary: #2b67e2;
+      --dark: #0f172a;
+      --dark-soft: #020617;
+      --light: #ffffff;
+      --gray: #9ca3af;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a { text-decoration: none; }
+
+    /* Floating Icons */
+    .fixed-icons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 999;
+    }
+
+    .fixed-icons img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: white;
+      padding: 6px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      transition: transform 0.2s ease;
+    }
+
+    .fixed-icons img:hover { transform: scale(1.08); }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 50px 20px 30px;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: var(--gray);
+      font-size: 1rem;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+      align-items: center;
+    }
+
+    .hero h2 {
+      font-size: 2.6rem;
+      line-height: 1.2;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero h2 { font-size: 2.1rem; }
+    }
+
+    /* Menu */
+    section.menu {
+      padding: 60px 20px;
+      background: var(--dark-soft);
+    }
+
+    section.menu h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .grid-item {
+      background: #020617;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .grid-item:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.9);
+    }
+
+    .grid-item h3 {
+      background: #020617;
+      margin: 0;
+      padding: 14px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    /* Facebook Feed */
+    .facebook-feed {
+      padding: 60px 20px;
+      background: #020617;
+      text-align: center;
+    }
+
+    .facebook-feed h2 {
+      margin-bottom: 35px;
+      font-size: 2rem;
+    }
+
+    .fb-wrapper {
+      max-width: 520px;
+      margin: auto;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 20px 55px rgba(0,0,0,0.95);
+    }
+
+    /* About */
+    section.about {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    section.about p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--gray);
+    }
+
+    /* Footer */
+    footer {
+      background: #020617;
+      color: #9ca3af;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.9rem;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(2,6,23,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal.active { display: flex; }
+
+    .modal-box {
+      background: #020617;
+      width: 95%;
+      max-width: 520px;
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+      animation: pop 0.3s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-box h3 {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .modal-box input,
+    .modal-box select,
+    .modal-box textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 12px;
+      border-radius: 10px;
+      border: 1px solid #1f2937;
+      background: #020617;
+      color: white;
+    }
+
+    .modal-box input::placeholder,
+    .modal-box textarea::placeholder {
+      color: #6b7280;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 30px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn.cancel {
+      background: #1f2937;
+      color: #d1d5db;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating Icons -->
+  <div class="fixed-icons">
+    <a href="https://wa.me/2349122613239" target="_blank" rel="noopener noreferrer">
+      <img src="icons/Whatsapp.jpg" alt="WhatsApp">
+    </a>
+    <a href="https://www.facebook.com/share/1Bt8TTTMi4/" target="_blank" rel="noopener noreferrer">
+      <img src="icons/Facebook.jpg" alt="Facebook">
+    </a>
+    <a href="mailto:mishealekpenyong365@gmail.com">
+      <img src="icons/Mail.jpg" alt="Email">
+    </a>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>Welcome to MishLux</h1>
+    <p>Luxury custom wears tailored perfectly for you</p>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>What Are We Making Today?</h2>
+    <img src="images/mish.png" alt="MishLux Designer">
+  </section>
+
+  <!-- Menu -->
+  <section class="menu">
+    <h2>Our Collections</h2>
+    <div class="grid-container">
+      <div class="grid-item" onclick="openModal('Shirts')">
+        <h3>SHIRTS</h3>
+        <img src="images/shirt.jpeg" loading="lazy">
+      </div>
+      <div class="grid-item" onclick="openModal('Trousers')">
+        <h3>TROUSERS</h3>
+        <img src="images/trousers.jpeg" loading="lazy">
+      </div>
+      <div class="grid-item" onclick="openModal('Senators')">
+        <h3>SENATORS</h3>
+        <img src="images/senator.jpeg" loading="lazy">
+      </div>
+      <div class="grid-item" onclick="openModal('Native Wear')">
+        <h3>NATIVE</h3>
+        <img src="images/native.jpeg" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Facebook Feed -->
+  <section class="facebook-feed">
+    <h2>UPDATES</h2>
+    <div class="fb-wrapper">
+      <iframe
+        src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/share/1Bt8TTTMi4/&tabs=timeline&width=500&height=600&adapt_container_width=true"
+        width="100%"
+        height="600"
+        style="border:none;overflow:hidden"
+        scrolling="no"
+        frameborder="0"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <h2>About MishLux</h2>
+    <p>
+      At MishLux, we create well-customized, mature and elegant clothing that makes you stand out in every occasion.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © MishLux 2026 — All Rights Reserved
+  </footer>
+
+  <!-- Order Modal -->
+  <div class="modal" id="orderModal">
+    <div class="modal-box">
+      <h3 id="productTitle">Order</h3>
+
+      <input type="text" id="customerName" placeholder="Your Name" required>
+      <input type="text" id="size" placeholder="Your Size" required>
+
+      <select id="fabric" required>
+        <option value="">Select Fabric</option>
+        <option>Cotton</option>
+        <option>Senator Material</option>
+        <option>Ankara</option>
+        <option>Custom Fabric</option>
+      </select>
+
+      <textarea id="details" rows="3" placeholder="Design details (optional)"></textarea>
+
+      <div class="modal-actions">
+        <button class="btn cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn primary" onclick="submitOrder()">Send Order</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("orderModal");
+    const productTitle = document.getElementById("productTitle");
+
+    function openModal(product) {
+      productTitle.textContent = "Order: " + product;
+      modal.classList.add("active");
+    }
+
+    function closeModal() {
+      modal.classList.remove("active");
+    }
+
+    function submitOrder() {
+      const product = productTitle.textContent.replace("Order: ", "");
+      const name = document.getElementById("customerName").value.trim();
+      const size = document.getElementById("size").value.trim();
+      const fabric = document.getElementById("fabric").value;
+      const details = document.getElementById("details").value.trim();
+
+      if (!name || !size || !fabric) {
+        alert("Please fill in your name, size and fabric.");
+        return;
+      }
+
+      const message = `
+*MISHLUX ORDER REQUEST*
+----------------------
+👕 Product: ${product}
+👤 Name: ${name}
+📏 Size: ${size}
+🧵 Fabric: ${fabric}
+📝 Details: ${details || "None"}
+
+📍 Sent from MishLux website
+`;
+
+      const phone = "2349122613239";
+      window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(message), "_blank");
+      closeModal();
+    }
+  </script>
+
+</body>
+</html>

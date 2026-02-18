@@ -1,0 +1,211 @@
+/* === Base Styles === */
+body {
+  margin: 0;
+  background: black url('images/pagecover.jpg') center/cover no-repeat;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* === Animation Setup === */
+h1, h2, h3, p, img, section, .grid-item, nav, .hero-grid, footer {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer fade-up animation */
+footer.visible, footer.visible h3, footer.visible p, footer.visible section {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Headings and Text === */
+h1 {
+  font-size: 60px;
+  color: lightblue;
+  margin-bottom: 30px;
+  transition-delay: 0.3s;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 0.5em 0;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 10px;
+  transform: scale(0.95);
+}
+
+img.visible {
+  transform: scale(1);
+}
+
+/* === Navigation === */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav a {
+  color: lightblue;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: white;
+}
+
+/* === Hero Section (Text Beside Image, Always) === */
+.hero-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.hero-grid h2 {
+  flex: 1;
+  font-size: clamp(28px, 5vw, 52px);
+  color: lightblue;
+  margin: 0;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.hero-grid img {
+  width: 250px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 15px;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Keep side-by-side on all devices */
+@media (max-width: 600px) {
+  .hero-grid {
+    flex-wrap: nowrap;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .hero-grid img {
+    width: 160px;
+  }
+
+  .hero-grid h2 {
+    font-size: 28px;
+  }
+}
+
+/* === Product Grid === */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  max-width: 900px;
+  margin: 40px auto;
+}
+
+.grid-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(173, 216, 230, 0.5);
+}
+
+/* === Floating Contact Icons (Middle Left with Tooltips) === */
+.fixed-icons {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+}
+
+.fixed-icons a {
+  position: relative;
+  display: inline-block;
+}
+
+.fixed-icons img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 1 !important;
+  transform: translateX(0);
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+/* Hover animation */
+.fixed-icons img:hover {
+  transform: translateX(8px) scale(1.1);
+  box-shadow: 0 0 15px rgba(173, 216, 230, 0.9);
+  opacity: 1;
+}
+
+/* Tooltip styling */
+.fixed-icons a::after {
+  content: attr(title);
+  position: absolute;
+  left: 65px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(173, 216, 230, 0.15);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 14px;
+  border: 1px solid rgba(173, 216, 230, 0.4);
+  backdrop-filter: blur(6px);
+}
+
+/* Tooltip hover effect */
+.fixed-icons a:hover::after {
+  opacity: 1;
+  transform: translate(10px, -50%);
+}
+
+/* === Footer === */
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 1s ease-in-out;
+}
+

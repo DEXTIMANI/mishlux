@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MishLux</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Floating Contact Icons -->
+  <div class="fixed-icons visible">
+    <a href="https://wa.me/+2349122613239" target="_blank" title="Chat on WhatsApp">
+      <img src="icons/Whatsapp.jpg" alt="WhatsApp Icon" />
+    </a>
+    <a href="mailto:mishealekpenyong365@gmail.com" title="Send us an Email">
+      <img src="icons/Mail.jpg" alt="Email Icon" />
+    </a>
+    <a href="https://www.facebook.com/mishael.ekpez" target="_blank" title="Follow on Facebook">
+      <img src="icons/Facebook.jpg" alt="Facebook Icon" />
+    </a>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h2>Welcome To</h2>
+  </header>
+
+  <!-- Page Banner -->
+  <img src="page.jpg" alt="Mishlux couture - luxury wears for men and women">
+
+  <h2 style="text-align:center">Hi, I'm Mishael.</h2>
+
+  <!-- Hero Section (Text Left, Image Right) -->
+  <div class="hero-grid">
+    <h1>What Are <br> We Making <br> Today?</h1>
+    <img src="images/mish.png" alt="Manager's Image">
+  </div>
+
+  <!--IFRAME: What's New -->
+  <h2>What's New</h2>
+  <div class="stylish-iframe" id="stylishIframe">
+    <div class="stylish-iframe__spinner" id="iframeSpinner">
+      <div class="spinner-dot"></div>
+    </div>
+
+    <iframe
+      class="stylish-iframe__frame"
+      id="myFancyIframe"
+      src="https://mishlux.netlify.app/updates.html"
+      title="What's New"
+      loading="lazy"
+      sandbox="allow-scripts allow-same-origin allow-forms"
+      allow="geolocation; microphone; camera; clipboard-read; clipboard-write"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
+  <button class="blue-btn" onclick="window.location.href="gallery.html'">
+    See All Samples
+  </button>
+  
+
+  <!-- Product Section -->
+  <header class="MENU">
+    <h1 class="brand-title">Check This Out</h1>
+    <p class="subtitle">MENU</p>
+  </header>
+
+  <main>
+    <div class="grid-container">
+      <div class="grid-item">
+        <h2>SHIRTS</h2>
+        <a href="shirts.html" target="_blank">
+          <img src="images/shirt.jpeg" alt="Collection of shirts">
+        </a>
+      </div>
+      <div class="grid-item">
+        <h2>TROUSERS</h2>
+        <a href="trousers.html" target="_blank">
+          <img src="images/trousers.jpeg" alt="Collection of trousers">
+        </a>
+      </div>
+      <div class="grid-item">
+        <h2>SENATORS</h2>
+        <a href="senator.html" target="_blank">
+          <img src="images/senator.jpeg" alt="Collection of senator outfits">
+        </a>
+      </div>
+      <div class="grid-item">
+        <h2>NATIVE</h2>
+        <a href="native.html" target="_blank">
+          <img src="images/native.jpeg" alt="Collection of native outfits">
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- About Section -->
+  <section>
+    <h3>About Us</h3>
+    <p>
+      At MishLux, we’re dedicated to giving our clients <br>
+      well-customized, mature clothing experiences <br>
+      that make them stand out in any occasion.
+    </p>
+
+    <button class="blue-btn" onclick="window.location.href='admin.html'">
+      Log In
+    </button>
+
+    <h4 style="color:pink">©MishLux 2026 - All rights reserved</h4>
+  </section>
+
+  <!-- Button Styles -->
+  <style>
+    .blue-btn {
+      background: #2b67e2;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .blue-btn:hover {
+      background: #1d4bbf;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    .blue-btn:active {
+      transform: scale(0.97);
+    }
+  </style>
+
+  <!-- Stylish Iframe Styles -->
+  <style>
+    .stylish-iframe {
+      max-width: 1000px;
+      margin: 40px auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      position: relative;
+      background: #0f172a;
+      transition: transform 0.3s ease;
+    }
+
+    .stylish-iframe:hover {
+      transform: translateY(-5px);
+    }
+
+    .stylish-iframe__frame {
+      width: 100%;
+      height: 600px;
+      border: 0;
+      opacity: 0;
+      transform: scale(1.03);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      background: #0b1220;
+    }
+
+    .stylish-iframe.loaded .stylish-iframe__frame {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .stylish-iframe__spinner {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: rgba(15,23,42,0.6);
+      z-index: 2;
+      transition: opacity 0.4s ease;
+    }
+
+    .stylish-iframe.loaded .stylish-iframe__spinner {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .spinner-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      animation: pulse 1s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(0.8); opacity: 0.4; }
+      50% { transform: scale(1); opacity: 1; }
+    }
+
+    /* Facebook overlay */
+    .fb-overlay {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 8px 16px;
+      border-radius: 40px;
+      z-index: 3;
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      backdrop-filter: blur(5px);
+    }
+
+    .fb-overlay img {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+
+    @media (max-width: 768px) {
+      .stylish-iframe__frame { height: 450px; }
+    }
+  </style>
+
+  <!-- Scripts -->
+  <script>
+    // Smooth iframe fade-in for "What's New"
+    const iframe = document.querySelector('#myFancyIframe');
+    const container = document.querySelector('#stylishIframe');
+    if (iframe && container) {
+      iframe.addEventListener('load', () => {
+        setTimeout(() => container.classList.add('loaded'), 200);
+      });
+    }
+
+    // Smooth iframe fade-in for Facebook
+    const fbIframe = document.getElementById('facebookIframe');
+    const fbContainer = document.getElementById('stylishIframeFB');
+    if (fbIframe && fbContainer) {
+      fbIframe.addEventListener('load', () => {
+        setTimeout(() => fbContainer.classList.add('loaded'), 300);
+      });
+    }
+  </script>
+
+  <!-- External JS -->
+  <script src="script.js"></script>
+
+</body>
+</html>

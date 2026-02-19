@@ -1,0 +1,211 @@
+/* === Base Styles === */
+body {
+  margin: 0;
+  background: black url('images/pagecover.jpg') center/cover no-repeat;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* === Smooth Fade + Slide Animation Setup === */
+h1, h2, h3, p, img, section, .grid-item, nav, .hero-grid, footer {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1s ease-in-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* === Headings === */
+h1 {
+  font-size: 60px;
+  color: lightblue;
+  margin-bottom: 30px;
+  transition-delay: 0.3s;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 0.5em 0;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 10px;
+  transform: scale(0.95);
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+}
+
+img.visible {
+  transform: scale(1);
+}
+
+/* === Navigation === */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+nav a {
+  color: lightblue;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: white;
+}
+
+/* === Hero Section (Text Left, Image Right, Always Side-by-Side) === */
+.hero-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: nowrap;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.hero-grid h2 {
+  flex: 1;
+  font-size: clamp(28px, 5vw, 52px);
+  color: lightblue;
+  margin: 0;
+  line-height: 1.2;
+  text-align: left;
+  transform: translateX(-60px);
+  transition: all 1.2s ease-in-out;
+}
+
+.hero-grid img {
+  width: 250px;
+  height: auto;
+  border-radius: 15px;
+  flex-shrink: 0;
+  transform: translateX(60px);
+  transition: transform 1.2s ease-in-out, opacity 1.2s ease-in-out;
+}
+
+/* When visible, text & image slide gracefully into place */
+.hero-grid.visible h2 {
+  transform: translateX(0);
+}
+
+.hero-grid.visible img {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Keep side-by-side on all devices (shrink gracefully) */
+@media (max-width: 600px) {
+  .hero-grid {
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .hero-grid img {
+    width: 160px;
+  }
+
+  .hero-grid h2 {
+    font-size: 28px;
+  }
+}
+
+/* === Product Grid === */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.grid-item {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(173, 216, 230, 0.5);
+}
+
+/* === About Section === */
+footer {
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+footer h3 {
+  font-size: 28px;
+  color: lightblue;
+  margin-bottom: 10px;
+}
+
+footer p {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* === Floating Icons (Now Mid-Left with Soft Bounce) === */
+.fixed-icons {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+  animation: fadeInUp 1.2s ease-in-out forwards;
+}
+
+.fixed-icons img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0.9;
+  transform: scale(0.9);
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.fixed-icons img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+  box-shadow: 0 0 12px rgba(173, 216, 230, 0.8);
+}
+
+/* === Icon Entrance Animation === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
